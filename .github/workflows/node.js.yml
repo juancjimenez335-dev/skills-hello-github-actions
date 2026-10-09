@@ -27,6 +27,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Show event trigger
+      run: echo "Triggered by ${{ github.event_name }}"
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -43,6 +45,9 @@ jobs:
       run: |
         npm install
         npm test
+  
       env:
         CI: true
+    - name: Show event trigger
+      run: echo "Triggered by ${{ github.event_name }}"
      
